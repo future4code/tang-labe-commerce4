@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Filters from "./Components/Filters/Filters"
 import Products from "./Components/Products/Products"
 import ShoppingCart from "./Components/ShoppingCart/ShoppingCart"
+import {AppContainer} from "./Styled"
 
 import './App.css';
 
@@ -15,11 +16,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <AppContainer>
         <Filters></Filters>
         <Products></Products>
         <ShoppingCart></ShoppingCart>
-      </div>
+      </AppContainer>
     )
   }
 }

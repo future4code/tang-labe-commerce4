@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import {ProductContainer} from './Styled'
 
 export default class Products extends Component {
     render() {
         return (
-            <div>
-                blz
-            </div>
+            <ProductContainer>
+                <nav>
+                    <p>Quantidade de produtos: 1</p>
+                </nav>
+                
+            </ProductContainer>
         )
     }
 }

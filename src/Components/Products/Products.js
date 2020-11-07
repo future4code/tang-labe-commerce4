@@ -16,42 +16,42 @@ export default class Products extends Component {
         produtos: [
             {
                 nomeProduto: "Millenium Falcon",
-                preco: 120,//000000.00,
+                preco: 120000000.00,
                 imagem: milleniumFalcon
             },
             {
                 nomeProduto: "Endurance",
-                preco: 20,//000000.00,
+                preco: 20000000.00,
                 imagem: endurance
             },
             {
                 nomeProduto: "Enterprise",
-                preco: 200,//000000.00,
+                preco: 200000000.00,
                 imagem: enterprise
             },
             {
                 nomeProduto: "Planet Express",
-                preco: 60,//000000.00,
+                preco: 60000000.00,
                 imagem: planetExpress
             },
             {
                 nomeProduto: "Normandy",
-                preco: 550,//000000.00,
+                preco: 550000000.00,
                 imagem: normandy
             },
             {
                 nomeProduto: "Star Destroyer",
-                preco: 1200,//000000.00,
+                preco: 1200000000.00,
                 imagem: starDestroyer
             },
             {
                 nomeProduto: "Tie Fighter",
-                preco: 4,//000000.00,
+                preco: 4000000.00,
                 imagem: tieFigther
             },
             {
                 nomeProduto: "X-Wing",
-                preco: 9,//000000.00,
+                preco: 9000000.00,
                 imagem: xWing
             }],
         ordenacao: "Menor Preço"

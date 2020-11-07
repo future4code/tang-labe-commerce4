@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {ProductHead} from './Styled'
+import {ProductHead, Ordenador} from './Styled'
 
 
 export default class ProductHeader extends Component {
@@ -13,12 +13,12 @@ export default class ProductHeader extends Component {
         return (
             <ProductHead>
                 <p>Quantidade de produtos: {this.props.quantidadeProdutos}</p>
-                <div>
+                <Ordenador>
                     <label> Ordenar por: </label>
                     <select value={this.props.valueOrdem} onChange={this.props.onChangeOrdem}>
                         {renderOpcoes}
                     </select>
-                </div>
+                </Ordenador>
             </ProductHead>
         )
     }

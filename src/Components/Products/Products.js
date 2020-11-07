@@ -16,16 +16,6 @@ export default class Products extends Component {
     return (
       <ProductContainer>
 
-        {filtros.map((product) => {
-          return (
-            <div>
-              <img src={product.image} /><br />
-              {product.title}<br />
-              R$ {product.price}
-            </div>
-          )
-        })}
-
       </ProductContainer>
     )
   }

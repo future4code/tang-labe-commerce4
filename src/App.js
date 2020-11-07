@@ -14,29 +14,6 @@ export default class App extends Component {
 
   //meu state MÁRNAND
   state = {
-    products: [
-      {
-        image: 'https://picsum.photos/id/1/200/200',
-        title: 'Item J',
-        price: 156.05
-      },
-      {
-        image: 'https://picsum.photos/id/2/200/200',
-        title: 'Item A',
-        price: 67.10
-      },
-      {
-        image: 'https://picsum.photos/id/3/200/200',
-        title: 'Item H',
-        price: 201.99
-      },
-      {
-        image: 'https://picsum.photos/id/4/200/200',
-        title: 'Item C',
-        price: 102.05
-      }
-    ],
-
     valorMax: "",
     valorMin: "",
     nomeProduto: ""

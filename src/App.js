@@ -44,7 +44,7 @@ export default class App extends Component {
           onChangeFiltroNome={this.nomeProduto}
         />
         <Products
-          lista={this.state.products}
+          // lista={this.state.products}
           filtroMax={this.state.valorMax}
           filtroMin={this.state.valorMin}
           filtroNome={this.state.nomeProduto}

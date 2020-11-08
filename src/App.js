@@ -11,20 +11,18 @@ import normandy from './Components/Products/img/normandy.png'
 import starDestroyer from './Components/Products/img/starDestroyer.jpg'
 import tieFigther from './Components/Products/img/tieFigther.jpg'
 import xWing from './Components/Products/img/xWing.jpg'
-
+import OpenCartButton from './Components/OpenCartButton/OpenCartButton'
 import './App.css';
 
 
-export default class App extends Component {
-  // state = {
-  //   shoppingCartList: [],
-  // }
 
-  //meu state MÁRNAND
+export default class App extends Component {
+
   state = {
     valorMax: "",
     valorMin: "",
     nomeProduto: "",
+    carrinhoAberto: false,
     shoppingCartListApp: [],
 
   produtos: [
@@ -112,6 +110,10 @@ onClickX = (item) => {
   this.setState({shoppingCartListApp: novoArray})
  }
 
+ abrirCarrinho = () => {
+   this.setState({carrinhoAberto: !this.state.carrinhoAberto})
+ }
+
   render() {
 
     let countedItensArray = this.state.shoppingCartListApp.map((object,index,array) => {
@@ -165,7 +167,8 @@ let  sortedArray = countedItensArray.sort((a,b) => {
           produtos={this.state.produtos}
           onClickBotao={(nome) => this.onClickBotao(nome)}>
         </Products>
-        <ShoppingCart onClickX={(item) => this.onClickX(item)} shoppingCartList={arrayReduced}></ShoppingCart>
+        {this.state.carrinhoAberto ? <ShoppingCart onClickX={(item) => this.onClickX(item)} shoppingCartList={arrayReduced}></ShoppingCart> : null}
+      <OpenCartButton onClickAbrirCarrinho={this.abrirCarrinho}/>
       </AppContainer>
     )
   }

@@ -14,8 +14,17 @@ import xWing from './Components/Products/img/xWing.jpg'
 
 import './App.css';
 
+
 export default class App extends Component {
+  // state = {
+  //   shoppingCartList: [],
+  // }
+
+  //meu state MÁRNAND
   state = {
+    valorMax: "",
+    valorMin: "",
+    nomeProduto: "",
     shoppingCartListApp: [],
 
   produtos: [
@@ -61,7 +70,17 @@ export default class App extends Component {
     }]
   }
 
+  valorMax = (event) => {
+    this.setState({ valorMax: event.target.value })
+  };
 
+  valorMin = (event) => {
+    this.setState({ valorMin: event.target.value })
+  };
+
+  nomeProduto = (event) => {
+    this.setState({ nomeProduto: event.target.value })
+  };
 
 onClickBotao = (nome) => {
   let novoProduto = {};
@@ -131,12 +150,25 @@ let  sortedArray = countedItensArray.sort((a,b) => {
     console.log(this.state.shoppingCartListApp)
     return (
       <AppContainer>
-        <Filters></Filters>
+        <Filters
+          filtroMax={this.state.valorMax}
+          filtroMin={this.state.valorMin}
+          filtroNome={this.state.nomeProduto}
+          onChangeFiltroMax={this.valorMax}
+          onChangeFiltroMin={this.valorMin}
+          onChangeFiltroNome={this.nomeProduto}
+        />
         <Products
-        produtos={this.state.produtos}
-        onClickBotao={(nome) => this.onClickBotao(nome)}></Products>
+          // lista={this.state.products}
+          filtroMax={this.state.valorMax}
+          filtroMin={this.state.valorMin}
+          filtroNome={this.state.nomeProduto}
+          produtos={this.state.produtos}
+          onClickBotao={(nome) => this.onClickBotao(nome)}>
+        </Products>
         <ShoppingCart onClickX={(item) => this.onClickX(item)} shoppingCartList={arrayReduced}></ShoppingCart>
       </AppContainer>
     )
   }
 }
+

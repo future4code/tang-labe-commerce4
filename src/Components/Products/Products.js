@@ -3,13 +3,20 @@ import {ProductContainer, CardContainer} from './Styled'
 import ProductCard from "../ProductCard/ProductCard";
 import ProductHeader from '../ProductHeader/ProductHeader'
 
-
 export default class Products extends Component {
     state = {
         produtos: this.props.produtos ,
         ordenacao: "Menor Preço"
 
     }
+    
+     getFiltros = () => {
+       return this.props.lista
+      .filter((product) => this.props.filtroMax ? product.price < this.props.filtroMax : true)
+      .filter((product) => this.props.filtroMin ? product.price > this.props.filtroMin : true)
+      .filter((product) => this.props.filtroNome ? product.title.includes(this.props.filtroNome) : true)
+    }
+    
 
     mudaOrdem = (event) => {
         this.setState({ordenacao: event.target.value})
@@ -29,9 +36,9 @@ export default class Products extends Component {
         }
     }
     
-    
-    
     render() {
+        const filtros = this.getFiltros()
+      
         const listaProdutos = this.state.produtos.map((element) => {
             return (
                 <ProductCard

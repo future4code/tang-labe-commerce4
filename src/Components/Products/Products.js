@@ -11,10 +11,10 @@ export default class Products extends Component {
     }
     
      getFiltros = () => {
-       return this.props.lista
-      .filter((product) => this.props.filtroMax ? product.price < this.props.filtroMax : true)
-      .filter((product) => this.props.filtroMin ? product.price > this.props.filtroMin : true)
-      .filter((product) => this.props.filtroNome ? product.title.includes(this.props.filtroNome) : true)
+       return this.props.produtos
+      .filter((product) => this.props.filtroMax ? product.preco <= this.props.filtroMax : true)
+      .filter((product) => this.props.filtroMin ? product.preco >= this.props.filtroMin : true)
+      .filter((product) => this.props.filtroNome ? product.nomeProduto.toLowerCase().includes(this.props.filtroNome.toLowerCase()) : true)
     }
     
 
@@ -39,7 +39,7 @@ export default class Products extends Component {
     render() {
         const filtros = this.getFiltros()
       
-        const listaProdutos = this.state.produtos.map((element) => {
+        const listaProdutos = filtros.map((element) => {
             return (
                 <ProductCard
                 imagem={element.imagem}

@@ -6,9 +6,14 @@ const MainDiv = styled.div `
     border: 2px solid black;
     align-items: center;
     min-width: 200px;
-    width: fit-content;
+    width: 20vw;
     height: 100vh;
     padding: 8px;
+
+    position: fixed;
+    right: 0;
+
+    background-color: rgb(0, 0, 0, 0.8);
 
  #ItensList {
     list-style: none;

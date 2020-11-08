@@ -10,7 +10,7 @@ export default class ProductCard extends Component {
                 <img src={this.props.imagem} alt="" />
                 <p>{this.props.produto}</p>
                 <p><strong>{this.props.preco}</strong></p>
-                <button>ADICIONAR AO CARRINHO</button>
+                <button onClick={this.props.onClickBotao}>ADICIONAR AO CARRINHO</button>
             </Card>
         )
     }

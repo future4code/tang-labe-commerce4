@@ -4,7 +4,7 @@ const MainDiv = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px black dashed;
+    border-bottom: 1px #23C54A dashed;
     margin: 10px 0;
     padding: 5px 0;
     list-style: none;

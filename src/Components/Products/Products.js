@@ -2,59 +2,13 @@ import React, { Component } from 'react'
 import {ProductContainer, CardContainer} from './Styled'
 import ProductCard from "../ProductCard/ProductCard";
 import ProductHeader from '../ProductHeader/ProductHeader'
-import milleniumFalcon from './img/milleniumFalcon.png'
-import endurance from './img/endurance.jpg'
-import enterprise from './img/enterprise.jpg'
-import planetExpress from './img/planetExpress.jpg'
-import normandy from './img/normandy.png'
-import starDestroyer from './img/starDestroyer.jpg'
-import tieFigther from './img/tieFigther.jpg'
-import xWing from './img/xWing.jpg'
+
 
 export default class Products extends Component {
     state = {
-        produtos: [
-            {
-                nomeProduto: "Millenium Falcon",
-                preco: 120000000.00,
-                imagem: milleniumFalcon
-            },
-            {
-                nomeProduto: "Endurance",
-                preco: 20000000.00,
-                imagem: endurance
-            },
-            {
-                nomeProduto: "Enterprise",
-                preco: 200000000.00,
-                imagem: enterprise
-            },
-            {
-                nomeProduto: "Planet Express",
-                preco: 60000000.00,
-                imagem: planetExpress
-            },
-            {
-                nomeProduto: "Normandy",
-                preco: 550000000.00,
-                imagem: normandy
-            },
-            {
-                nomeProduto: "Star Destroyer",
-                preco: 1200000000.00,
-                imagem: starDestroyer
-            },
-            {
-                nomeProduto: "Tie Fighter",
-                preco: 4000000.00,
-                imagem: tieFigther
-            },
-            {
-                nomeProduto: "X-Wing",
-                preco: 9000000.00,
-                imagem: xWing
-            }],
+        produtos: this.props.produtos ,
         ordenacao: "Menor Preço"
+
     }
 
     mudaOrdem = (event) => {
@@ -84,6 +38,7 @@ export default class Products extends Component {
                 imagem={element.imagem}
                 produto={element.nomeProduto}
                 preco={element.preco}
+                onClickBotao={() => this.props.onClickBotao(element.nomeProduto)}
                 />     
             )
         })

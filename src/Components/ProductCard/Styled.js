@@ -5,9 +5,10 @@ export const Card = styled.div`
     border-width: 4px;
     border-style: none;
     border-color: #23C54A;
+    border-radius: 10px;
     max-width: 300px;
     margin: 16px;
-    box-shadow: 2px 2px 8px 0px skyblue;
+    box-shadow: 2px 2px 20px 0px skyblue;
     &:hover {
         img {
             filter: contrast(100%)
@@ -17,6 +18,8 @@ export const Card = styled.div`
         width: 100%;
         height: 200px;
         filter: contrast(80%);
+
+        border-radius: 10px 10px 0 0;
     }
     p {
         margin-left: 16px;
@@ -30,6 +33,8 @@ export const Card = styled.div`
         font-weight: 700;
         font-size: 16px;
         position: relative;
+
+        cursor: pointer;
     }
     button::before, button::after {
         content: '';

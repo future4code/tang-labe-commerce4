@@ -159,7 +159,6 @@ let  sortedArray = countedItensArray.sort((a,b) => {
           onChangeFiltroNome={this.nomeProduto}
         />
         <Products
-          // lista={this.state.products}
           filtroMax={this.state.valorMax}
           filtroMin={this.state.valorMin}
           filtroNome={this.state.nomeProduto}

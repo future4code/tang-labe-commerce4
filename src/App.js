@@ -1,26 +1,176 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import Filters from "./Components/Filters/Filters"
+import Products from "./Components/Products/Products"
+import ShoppingCart from "./Components/ShoppingCart/ShoppingCart"
+import {AppContainer} from "./Styled"
+import milleniumFalcon from './Components/Products/img/milleniumFalcon.png'
+import endurance from './Components/Products/img/endurance.jpg'
+import enterprise from './Components/Products/img/enterprise.jpg'
+import planetExpress from './Components/Products/img/planetExpress.jpg'
+import normandy from './Components/Products/img/normandy.png'
+import starDestroyer from './Components/Products/img/starDestroyer.jpg'
+import tieFigther from './Components/Products/img/tieFigther.jpg'
+import xWing from './Components/Products/img/xWing.jpg'
+import OpenCartButton from './Components/OpenCartButton/OpenCartButton'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+export default class App extends Component {
+
+  state = {
+    valorMax: "",
+    valorMin: "",
+    nomeProduto: "",
+    carrinhoAberto: false,
+    shoppingCartListApp: [],
+
+  produtos: [
+    {
+        nomeProduto: "Millenium Falcon",
+        preco: 120000000.00,
+        imagem: milleniumFalcon
+    },
+    {
+        nomeProduto: "Endurance",
+        preco: 20000000.00,
+        imagem: endurance
+    },
+    {
+        nomeProduto: "Enterprise",
+        preco: 200000000.00,
+        imagem: enterprise
+    },
+    {
+        nomeProduto: "Planet Express",
+        preco: 60000000.00,
+        imagem: planetExpress
+    },
+    {
+        nomeProduto: "Normandy",
+        preco: 550000000.00,
+        imagem: normandy
+    },
+    {
+        nomeProduto: "Star Destroyer",
+        preco: 1200000000.00,
+        imagem: starDestroyer
+    },
+    {
+        nomeProduto: "Tie Fighter",
+        preco: 4000000.00,
+        imagem: tieFigther
+    },
+    {
+        nomeProduto: "X-Wing",
+        preco: 9000000.00,
+        imagem: xWing
+    }]
+  }
+
+  valorMax = (event) => {
+    this.setState({ valorMax: event.target.value })
+  };
+
+  valorMin = (event) => {
+    this.setState({ valorMin: event.target.value })
+  };
+
+  nomeProduto = (event) => {
+    this.setState({ nomeProduto: event.target.value })
+  };
+
+onClickBotao = (nome) => {
+  let novoProduto = {};
+
+   let novoArray = this.state.produtos.map( element => {
+           if (nome === element.nomeProduto) {
+            return novoProduto = {name: element.nomeProduto,
+                         price: element.preco,
+                         quantidade: 1}
+          }
+        })
+        
+        novoArray = [ novoProduto, ...this.state.shoppingCartListApp ]
+        
+       
+  
+
+this.setState({shoppingCartListApp: novoArray})
+
 }
 
-export default App;
+onClickX = (item) => {
+  let novoArray = this.state.shoppingCartListApp.filter(elemento => {
+      if(elemento.name !== item.name) {
+         return {...elemento.name}
+      }
+  })
+
+  this.setState({shoppingCartListApp: novoArray})
+ }
+
+ abrirCarrinho = () => {
+   this.setState({carrinhoAberto: !this.state.carrinhoAberto})
+ }
+
+  render() {
+
+    let countedItensArray = this.state.shoppingCartListApp.map((object,index,array) => {
+      let acc = 0;  
+      array.map(item => {
+          if (object.name === item.name) {
+              acc++
+          } 
+      })
+  
+      return {...object, quantidade: acc}
+      
+  
+  }) // Conta os itens repetidos e define as quantidades.
+  
+  
+let  sortedArray = countedItensArray.sort((a,b) => {
+      if (a.name < b.name) {
+              return -1
+      } else if (a.name > b.name) {
+              return 1
+      }
+  
+      return 0
+  }); // Ordena o array conforme o nome do item preparando-o para a função seguinte.
+  
+         
+ let arrayReduced = sortedArray.reduce((init, current) => {
+      if (init.length === 0 || init[init.length - 1].name !== current.name) {
+              init.push(current);
+      } // Remove os items repetidos do array.
+
+      return init;
+  }, []);
+
+    console.log(this.state.shoppingCartListApp)
+    return (
+      <AppContainer>
+        <Filters
+          filtroMax={this.state.valorMax}
+          filtroMin={this.state.valorMin}
+          filtroNome={this.state.nomeProduto}
+          onChangeFiltroMax={this.valorMax}
+          onChangeFiltroMin={this.valorMin}
+          onChangeFiltroNome={this.nomeProduto}
+        />
+        <Products
+          filtroMax={this.state.valorMax}
+          filtroMin={this.state.valorMin}
+          filtroNome={this.state.nomeProduto}
+          produtos={this.state.produtos}
+          onClickBotao={(nome) => this.onClickBotao(nome)}>
+        </Products>
+        {this.state.carrinhoAberto ? <ShoppingCart onClickX={(item) => this.onClickX(item)} shoppingCartList={arrayReduced}></ShoppingCart> : null}
+      <OpenCartButton onClickAbrirCarrinho={this.abrirCarrinho}/>
+      </AppContainer>
+    )
+  }
+}
+
